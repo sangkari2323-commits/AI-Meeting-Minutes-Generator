@@ -4,6 +4,10 @@ import urllib.request
 import tempfile
 import whisper
 import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"), override=True)
+
 
 st.set_page_config(
     page_title="AI Meeting Minutes Generator",
@@ -40,7 +44,7 @@ if uploaded_file is not None:
         st.write(transcript)
 
         api_key = os.environ["OPENROUTER_API_KEY"]
-
+        
         prompt = f"""
 You are an AI meeting minutes assistant.
 
